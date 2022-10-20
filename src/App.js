@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import React from "react";
 
 function App() {
+  const [data, setData] = React.useState({
+    name: undefined,
+    noOfUsers: undefined,
+    noOfFailedLogins: undefined,
+    noOfGrp: undefined,
+    noOfActiveUsers: undefined,
+    c1: undefined,
+    c2: undefined
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="" element={<Home data={data} setData={setData} />}></Route>
+        <Route path="/dashboard" element={<Dashboard data={data} />}></Route>
+      </Routes>
+    </>
   );
 }
 
